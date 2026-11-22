@@ -1,0 +1,19 @@
+name: CI
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version-file: .nvmrc
+      - run: npm install --global npm@11.20.0
+      - run: npm ci
+      - run: npm run check

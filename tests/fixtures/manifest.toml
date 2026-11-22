@@ -1,0 +1,9 @@
+[package]
+name = "synthetic-orchard"
+version = "1.0.0"
+private = true
+
+[inventory]
+category = "fictional trees"
+labels = ["Silver birch", "Copper maple"]
+quantity = 12
