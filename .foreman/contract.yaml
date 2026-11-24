@@ -1,0 +1,4 @@
+check: npm run check
+setup:
+  - npm ci
+verify_skill: .cursor/skills/verify-foreman-smoke-npm/SKILL.md
