@@ -22,13 +22,13 @@ For JUnit evidence, run the `check` command from `.foreman/contract.yaml`. It ru
 
 ## Drive a criterion
 
-- A criterion about a file's content: read the file at the tested head with `git show HEAD:<path>` and compare its exact bytes, trailing newline included.
+- For a file-content criterion, run `node -e 'console.log(require("node:fs").readFileSync(process.argv[1]).toString("hex"))' '<path>'` from the checkout. Compare the hex output, including `0a` for an expected trailing newline.
 - A criterion about the library: call the export with `node --input-type=module -e 'import { normalizeWhitespace } from "./src/text.js"; console.log(JSON.stringify(normalizeWhitespace("...")))'` and compare the printed value.
 
 ## Evidence
 
-For each criterion, record the command, its exit code and its output, and the head commit it ran at (`git rev-parse HEAD`). A criterion passes only when that output shows the expected result. A check that was not run, or output that doesn't show the criterion, leaves it unverified.
+For each criterion, record the command, its exit code and its output. Use the published head and changed paths supplied by Foreman. A criterion passes only when that output shows the expected result. A check that was not run, or output that doesn't show the criterion, leaves it unverified.
 
 ## Cleanup
 
-Nothing to stop. `node_modules/` and `reports/` are ignored. `git status --short` must be empty afterward.
+Nothing to stop. Foreman checks checkout cleanliness afterward.
