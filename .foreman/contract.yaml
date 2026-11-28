@@ -1,4 +1,17 @@
-check: npm run check
+check: >-
+  mkdir -p reports && npm run check --
+  --test-reporter=spec --test-reporter-destination=stdout
+  --test-reporter=junit --test-reporter-destination=reports/junit.xml
+verify_skill: .cursor/skills/verify-foreman-smoke-npm/SKILL.md
+test_report: reports/junit.xml
+image: node:26.12.1-bookworm-slim
 setup:
   - npm ci
-verify_skill: .cursor/skills/verify-foreman-smoke-npm/SKILL.md
+secrets: []
+mutation:
+  command: node tools/mutate.js
+  sample_cap: 10
+production_check:
+  command: node tools/production-check.js "$1"
+  not_deployed_exit: 3
+  timeout_seconds: 90
