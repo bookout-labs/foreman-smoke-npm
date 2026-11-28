@@ -27,7 +27,7 @@ For JUnit evidence, run the `check` command from `.foreman/contract.yaml`. It ru
 
 ## Evidence
 
-For each criterion, record the command, its exit code and its output. Use the published head and changed paths supplied by Foreman. A criterion passes only when that output shows the expected result. A check that was not run, or output that doesn't show the criterion, leaves it unverified.
+Use Foreman's published head and changed paths as evidence for head and change-scope checks. Record each command, its exit code, and its output. Mark a criterion unverified when the evidence needed to judge it is missing.
 
 ## Cleanup
 
