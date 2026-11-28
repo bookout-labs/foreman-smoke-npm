@@ -18,6 +18,8 @@ npm run check
 
 `npm run check` runs `node --test`. It passes when the summary shows `fail 0` and the exit code is 0. Neither command changes a tracked file.
 
+For JUnit evidence, run the `check` command from `.foreman/contract.yaml`. It runs the same suite and writes `reports/junit.xml`.
+
 ## Drive a criterion
 
 - A criterion about a file's content: read the file at the tested head with `git show HEAD:<path>` and compare its exact bytes, trailing newline included.
@@ -29,4 +31,4 @@ For each criterion, record the command, its exit code and its output, and the he
 
 ## Cleanup
 
-Nothing to stop. `node_modules/` is ignored. `git status --short` must be empty afterward.
+Nothing to stop. `node_modules/` and `reports/` are ignored. `git status --short` must be empty afterward.

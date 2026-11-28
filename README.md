@@ -8,7 +8,7 @@ contract and runtime or dependency updates.
 The fixture contract includes the following properties.
 
 - A small ESM text library with no runtime dependencies and a meaningful `node --test` suite.
-- `npm ci` as preflight and `npm run check` as the check command. Both leave the checkout clean.
+- `npm ci` as preflight and `npm run check` as the test command. Foreman's check also writes a JUnit report to the ignored `reports/junit.xml` path.
 - Node 26.12.1 and npm 11.20.0, recorded in `package.json`, with Node also pinned in `.nvmrc`.
 - A committed npm lockfile at version 3 and an ignored `node_modules/` directory.
 - A valid, unrelated TOML package manifest at `tests/fixtures/manifest.toml`.
