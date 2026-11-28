@@ -27,7 +27,7 @@ async function check(commit) {
       if (attempt < 3) await delay(2_000 * attempt);
     }
   }
-  return 2;
+  return 3;
 }
 
 process.exitCode = await check(process.argv[2]);
